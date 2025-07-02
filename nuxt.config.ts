@@ -4,7 +4,7 @@ export default defineNuxtConfig({
 	devtools: {enabled: true},
 	runtimeConfig: {
 		public: {
-			apiBase: 'http://localhost:3001/api'
+			apiBase: process.env.API_BASE_URL || 'http://localhost:3001/api'
 		}
 	},
 	css: [
@@ -30,5 +30,5 @@ export default defineNuxtConfig({
 				}
 			]
 		}
-	}
+	},
 })

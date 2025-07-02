@@ -1,5 +1,4 @@
 import {defineStore} from "pinia";
-import {ApiUrl} from "~/utils/api-url.js";
 
 
 export const useFormStore = defineStore("FormStore", {
@@ -16,11 +15,18 @@ export const useFormStore = defineStore("FormStore", {
 
 	actions: {
 		async post(data) {
+			const apiUrl = useApiUrl();
+			console.log("apiUrl.FORMS:", apiUrl.FORMS);
 			this.loading = true;
 			try {
-				const response = await $fetch(ApiUrl.getAsUrl(ApiUrl.FORMS), {
-					method: "POST",
-					body: JSON.stringify(data)
+				const response = await $fetch(apiUrl.FORMS, {
+					method: 'POST',
+					body: data,
+					headers: {
+						'Content-Type': 'application/json',
+						'Accept': 'application/json',
+						'ngrok-skip-browser-warning': 'true',
+					}
 				});
 
 				this.message = response.message;

@@ -14,7 +14,7 @@ export const useContactData = defineStore('ContactData', {
 	actions: {
 		async get() {
 			const apiUrl = useApiUrl();
-
+			
 			const response = await $fetch(apiUrl.CONTACT_DATA,
 				{
 					method: 'GET',
