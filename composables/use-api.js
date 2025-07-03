@@ -3,9 +3,7 @@ export const useApi = () => {
 
 	// ""
 	const apiBase = config.public.apiBase
-	// const apiBase = "http://localhost:3001/api"
 	console.log("ApiBase-c:", config.public);
-	// const apiBase = config.public.apiBase
 
 	const defaultHeaders = {
 		'Content-Type': 'application/json',
