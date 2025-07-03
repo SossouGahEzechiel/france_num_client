@@ -1,4 +1,5 @@
 import {defineStore} from "pinia";
+import {useApi} from "~/composables/use-api";
 
 export const useContactData = defineStore('ContactData', {
 	state: () => ({
@@ -13,19 +14,12 @@ export const useContactData = defineStore('ContactData', {
 	}),
 	actions: {
 		async get() {
+			const api = useApi();
 			const apiUrl = useApiUrl();
 
-			const response = await $fetch(apiUrl.CONTACT_DATA,
-				{
-					method: 'GET',
-					headers: {
-						'Content-Type': 'application/json',
-						'Accept': 'application/json',
-						'ngrok-skip-browser-warning': 'true'
-					}
-				});
-
 			try {
+				const response = await api.get(apiUrl.CONTACT_DATA);
+
 				this.contactData = response.data;
 				this.message = "success";
 			} catch (error) {
