@@ -1,7 +1,6 @@
 export const useApi = () => {
 	const config = useRuntimeConfig()
 
-	// ""
 	const apiBase = config.public.apiBase
 	console.log("ApiBase-c:", config.public);
 
